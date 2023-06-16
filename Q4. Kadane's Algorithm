@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int max_sum = -1e9;
+        int sum = 0;
+        vector<int> subArray;
+        for (int i = 0 ; i < nums.size() ; i++){
+            sum += nums[i];
+            max_sum = max(max_sum, sum);
+            if (sum < 0) {
+                sum = 0;
+                subArray.clear();
+            }
+            else subArray.push_back(nums[i]);
+        }
+        for (auto it : subArray) cout << it << " ";
+        cout << endl;
+        return max_sum;
+    }
+};
